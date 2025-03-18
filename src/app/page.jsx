@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose, DialogDescription } from "@/components/ui/dialog";
+import { FaGithub } from "react-icons/fa";
 
 import CardLightNormal from "@/components/CardLightNormal";
 import CardLightHolo from "@/components/CardLightHolo";
@@ -39,15 +39,15 @@ export default function Home() {
     if (event.target.files.length > 0) {
       setFileName(event.target.files[0].name);
     } else {
-      setFileName(""); // Si no hay archivo, limpiar el estado
+      setFileName("");
     }
     if (!file) return;
     const reader = new FileReader();
     reader.onload = (e) => {
       try {
         const data = JSON.parse(e.target.result);
-        setJsonData(null); // Forzar actualización
-        setTimeout(() => setJsonData(data), 0); // Volver a asignar después de resetear
+        setJsonData(null);
+        setTimeout(() => setJsonData(data), 0);
       } catch (error) {
         console.error("Error parsing JSON:", error);
       }
@@ -57,6 +57,17 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-800 text-white p-6 flex flex-col items-center justify-center">
+      <div className="mb-4 flex justify-center">
+        <a
+          href="https://github.com/cristobalg68/Pokemon_TCG_Stock_Manager"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-white transition duration-300"
+          title="Git of the main project"
+        >
+          <FaGithub size={30} />
+        </a>
+      </div>
       <h1 className="text-4xl font-extrabold mb-4 text-gray-100 tracking-wide">Welcome</h1>
       <p className="text-lg mb-6">Upload your JSON file to process the cards</p>
       <Card className="p-6 bg-gray-700 border border-gray-600 shadow-xl rounded-2xl flex items-center justify-center w-125 transition-all hover:shadow-2xl">
