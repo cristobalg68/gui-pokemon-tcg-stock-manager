@@ -52,4 +52,4 @@ Displays the results from the JSON file, including:
 
 ## Examples of use
 
-![image](public\example.png)
+![image](public/example.png)
